@@ -22,8 +22,12 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::updateball(){
-    thisball->updatepos(v2(0,0), 1);
+
+    //改这里，这是每秒球受到的力，改变v2的值试试。
+    thisball->updatepos(v2(5,-1), 1);
+
+
     ui->balltest->setGeometry(static_cast<int>(thisball->s().x()),
-                              static_cast<int>(thisball->s().y()), 121,121);
+                              static_cast<int>((thisball->s().y())), 121,121);
 
 }
