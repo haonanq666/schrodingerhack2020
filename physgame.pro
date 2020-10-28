@@ -10,12 +10,14 @@ CONFIG += c++11
 
 SOURCES += \
     ball.cpp \
+    fan.cpp \
     main.cpp \
     mainwindow.cpp \
     v2.cpp
 
 HEADERS += \
     ball.h \
+    fan.h \
     mainwindow.h \
     v2.h
 

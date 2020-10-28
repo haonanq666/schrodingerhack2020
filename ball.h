@@ -9,13 +9,15 @@ public:
     v2 s();
     v2 v();
     v2 a();
+    double getR();
     void updatepos(v2 force, double time);
 private:
     v2 position;
     v2 ballvelocity;
     v2 ballacceleration;
     double ballmass;
-
+    v2 gravity;
+    double radious;
 };
 
 #endif // BALL_H

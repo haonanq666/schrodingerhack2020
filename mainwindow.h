@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "ball.h"
+#include "fan.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,8 @@ public:
     ~MainWindow();
     QTimer* balltimer;
     ball* thisball;
+    fan* thisfan;
+    v2 fanForce;  //不知道在这里declare合不合适
 
 public slots:
     void updateball();
