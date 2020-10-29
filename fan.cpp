@@ -1,25 +1,76 @@
 #include "fan.h"
 #include<cmath>
-
-fan::fan(v2 leftPoint, double length, double velocity)
+#include <QDebug>
+fan::fan(v2 leftPoint, v2 rightPoint, double velocity)
 {
     left = leftPoint;
-    right = v2((left.x()+length),left.y());
-    windVelocity = v2(0,velocity);
+    right = rightPoint;
+    windVelocity = v2(
+                (-(right+left*(-1)).y())/(right+left*(-1)).magnitude(),
+                ((right+left*(-1)).x())/(right+left*(-1)).magnitude()
+                )*velocity;
     windDensity = 1.293;
 }
 
 
 bool fan::isIn (v2 pos){
-    return(pos.x()>=left.x())&&(pos.x()<=(right.x()))&&(pos.y()<=left.y());
+    v2 pleft = pos-left;
+    v2 pright = pos-right;
+
+    if(
+       windVelocity.angle()>= pleft.angle()&&
+       windVelocity.angle() <= pright.angle()
+         ){
+        //qDebug()<<"true";
+
+        return true;
+    }else{
+        //qDebug()<<"false";
+        // 不知道为什么球吹风时也有一半的时候显示false。。。
+        return false;
+    }
+
+
+
+    //return(pos.x()>=left.x())&&(pos.x()<=(right.x()))&&(pos.y()<=left.y());
 
 };
 
 v2 fan :: getForce(ball* B){
-    return windVelocity.power(2) * (-windDensity * M_PI * pow(B->getR(),2));
-    //有时间的话可以优化Area的算法(比如只有部分小球刚进入风扇范围内时)，这里只用了Pi*r^2
-};
+    if(!isIn(B->s())){
+        return v2(0,0);
+    }else{
+        //return (windVelocity.power(2) * (-windDensity * M_PI * pow(B->getR(),2)));
+        return windVelocity*0.5;
 
+        //有时间的话可以优化Area的算法(比如只有部分小球刚进入风扇范围内时)，这里只用了Pi*r^2
+        //这个运算仔细研究一下。
+    }
+}
+
+v2 fan::lpoint(){
+    return left;
+}
+
+v2 fan::rpoint(){
+    return right;
+}
+
+v2 fan::paintlpoint(){
+    if((right-left).angle() < M_PI ){
+         return left;
+    }else{
+        return right;
+    }
+
+}
+v2 fan::paintrpoint(){
+    if((right-left).angle() < M_PI ){
+    return right;
+    }else{
+        return left;
+    }
+}
 
 /* 以下是有角度的风扇的constructor，还没写完
 fan::fan(v2 left, double an, double length, double velocity)

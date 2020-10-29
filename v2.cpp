@@ -29,3 +29,11 @@ v2 v2::power(double power){
 v2 v2::operator*(const double& scalar){
     return v2(scalar*xcomponent, scalar*ycomponent);
 }
+
+v2 v2::operator-(const v2 & input){
+    return v2(xcomponent-input.xcomponent, ycomponent-input.ycomponent);
+}
+
+double v2::angle(){
+    return atan2(ycomponent, xcomponent);
+}

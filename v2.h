@@ -12,7 +12,9 @@ public:
     double magnitude();
     v2 operator+(const v2&);
     v2 operator*(const double&);
+    v2 operator-(const v2&);
     v2 power(double power=2);
+    double angle();
 private:
     double xcomponent;
     double ycomponent;

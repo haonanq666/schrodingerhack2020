@@ -27,7 +27,8 @@ double ball::getR(){
 }
 
 void ball::updatepos(v2 force, double time){
-    ballacceleration = (gravity + force)*(1/ballmass);
-    ballvelocity = ballvelocity + ballacceleration*time;
+    ballacceleration = (force)*(1/ballmass);
+
     position = (ballacceleration*pow(time, 2))*0.5+ ballvelocity*time+position;
+    ballvelocity = ballvelocity + ballacceleration*time;
 }

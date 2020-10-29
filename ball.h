@@ -11,6 +11,7 @@ public:
     v2 a();
     double getR();
     void updatepos(v2 force, double time);
+
 private:
     v2 position;
     v2 ballvelocity;
