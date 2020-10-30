@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTextEdit" name="inputV">
+  <widget class="QTextEdit" name="inputA">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -35,7 +35,7 @@
     <string notr="true">QPushButton { background-color: rgb(0, 0, 0); border-radius: 3px; color: rgb(255, 255, 255); } QPushButton:hover { background-color: rgb(0, 245, 255); }</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="InputA">
+  <widget class="QTextEdit" name="InputV">
    <property name="geometry">
     <rect>
      <x>170</x>

@@ -25,8 +25,8 @@ void StartDialog::start()
     bool yes = false;
     bool yes2 = false;
 
-    double v = ui->inputV->toPlainText().toDouble(&yes);
-    double angle = (ui->InputA->toPlainText().toDouble(&yes2))*M_PI/180;
+    double v = ui->InputV->toPlainText().toDouble(&yes);
+    double angle = (ui->inputA->toPlainText().toDouble(&yes2))*M_PI/180;
 
     if(!(yes&&yes2)){
         ui->msg->setText("Invalid Input!");

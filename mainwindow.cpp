@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     exitlabel = new QLabel(this);
     exitlabel->setScaledContents(true);
     exitlabel->setPixmap(exitimg);
-    exitlabel->setGeometry(900,50,100,150);                    //可以调整(x,y,width,height)
+    exitlabel->setGeometry(exitpos.x(),screenh-exitpos.y()-150,100,150);                    //可以调整(x,y,width,height)
     balllabel = new QLabel(this);
     balllabel->setScaledContents(true);
     balllabel->setPixmap(ballimg);
@@ -78,16 +78,41 @@ void MainWindow::drawfan(fan * fan){
 
 }
 
+bool MainWindow::checkexit(){
+    bool yin = (exitpos.y()<=thisball->s().y()&&
+                thisball->s().y()<= exitpos.y()+150
+                );
+    qDebug()<<exitpos.y();
+    qDebug()<<thisball->s().y();
+    bool xin = (exitpos.x()<=thisball->s().x()&&
+                thisball->s().x()<= exitpos.x()+100
+                );
+    //qDebug()<<xin;
+    if(yin&&xin){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 void MainWindow::updateball(){
 
     //改这里，这是每秒球受到的力，改变v2的值试试。#(右/下为正方向)# 日后通过提取屏幕
     //分辨率，使得原点可以挪到左下。目前假设屏幕高600（按需求调整）。
-    thisball->updatepos(sumForce(thisball), updateperiod);
-    //qDebug()<<thisball->s().y();
-    c.updateCollisionStatus(thisball, arr);
-    cout << thisball->s().x()<< " x direction; " << thisball->s().y() << " y direction.\n";
-    drawball();
+
+
+    if(!gamewon){
+        thisball->updatepos(sumForce(thisball), updateperiod);
+        //qDebug()<<thisball->s().y();
+        //c.updateCollisionStatus(thisball, arr);
+        //cout << thisball->s().x()<< " x direction; " << thisball->s().y() << " y direction.\n";
+        drawball();
+
+        if(checkexit()){
+            gamewon=true;
+
+        }
+    }
 /*    if(thisball->s().y()<-200){
         gameOver s;
         s.show();

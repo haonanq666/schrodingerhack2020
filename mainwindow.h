@@ -28,6 +28,7 @@ public:
     const int screenh = 600;
     const double updateperiod = 0.01; //s
     const int clockspeed = 1; //ms
+    v2 exitpos = v2(900, 400);
     QTimer* balltimer;
     ball* thisball;
     fan* thisfan;
@@ -39,6 +40,7 @@ public:
     v2 g = v2(0,-9.80665);
     Collision c;
     vector<v2> arr;
+    bool gamewon=false;
 
     v2 sumForce(ball*);
 
@@ -49,6 +51,7 @@ public:
     void drawfan(fan*);
     void drawball();
     void setV(v2 v);
+    bool checkexit();
 
 signals:
 
