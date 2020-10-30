@@ -49,6 +49,7 @@ signals:
 
 public slots:
     void updateball();
+    //void setV(v2);
 
 private:
     Ui::MainWindow *ui;

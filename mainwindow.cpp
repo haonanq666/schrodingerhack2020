@@ -9,13 +9,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    StartDialog *s = new StartDialog(this);
-    connect(s,&StartDialog::sendV, this, &MainWindow::setV);
-    s->exec();
+    this->setWindowTitle("Blowy Balley -- Level 1");
     balltimer = new QTimer(this);
-    thisball = new ball( v2(0, 300), 40, ve);  //ball(v2 pos, double mass,v2 velocity, v2 acc)
+     //ball(v2 pos, double mass,v2 velocity, v2 acc)
 
-    fans.push_back(new fan(v2(200,100), v2(400, 200), 2));            //fan(v2 leftPoint, v2 rightPoint, double velocity)
+    fans.push_back(new fan(v2(200,100), v2(400, 200), 1));            //fan(v2 leftPoint, v2 rightPoint, double velocity)
     fans.push_back(new fan(v2(800, 500), v2(400, 500), 2));         //可以在这里调整风速
     //fanForce = thisfan->getForce(thisball);
     connect(balltimer, SIGNAL(timeout()), this, SLOT(updateball()));
@@ -36,6 +34,7 @@ MainWindow::~MainWindow()
 void MainWindow::setV(v2 v)
 {
     ve = v;
+    thisball = new ball( v2(0, 300), 40, ve);
     qDebug()<<ve.magnitude();
     qDebug()<<ve.angle();
 }
