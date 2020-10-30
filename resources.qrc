@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>product_14.png</file>
+        <file>sucai/1436341580.jpg</file>
+        <file>sucai/674774700.jpg</file>
+        <file>sucai/827690806.jpg</file>
+        <file>sucai/Background.jpg</file>
+        <file>sucai/Ball.png</file>
+        <file>sucai/Cannon.png</file>
+        <file>sucai/Exit.png</file>
+        <file>sucai/Wind.png</file>
+        <file>sucai/Exit.jpg</file>
+        <file>sucai/StartD.png</file>
+        <file>sucai/gameover.png</file>
+    </qresource>
+</RCC>
