@@ -30,11 +30,11 @@ bool fan::isIn (v2 pos){
     v2 pright = pos-right;
     double ran = getAngle(pright.angle());      //计算pright与风扇向量(right-left)的夹角，并另其取值范围为(-Pi,Pi)
     double lan = getAngle(pleft.angle());       //计算pleft与风扇向量的夹角，并另其取值范围为(-Pi,Pi)
-
     //qDebug()<<"r"<<ran;
     //qDebug()<<"l"<<lan;
 
     if(
+       (pos-(left+right)*0.5).magnitude() <200 &&   //在一定范围内
        M_PI/2 >= lan && lan >= 0 &&        //左角度应大于0，小于90.
        M_PI >= ran && ran >= M_PI/2          //右角度应大于90，小于180.
          ){

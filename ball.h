@@ -17,7 +17,6 @@ private:
     v2 ballvelocity;
     v2 ballacceleration;
     double ballmass;
-    v2 gravity;
     double radious;
 };
 

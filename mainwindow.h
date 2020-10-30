@@ -35,7 +35,8 @@ public:
     QLabel* exitlabel;
     QLabel* canlabel;
     QVector<fan*> fans;
-    const v2 g = v2(0,-9.80665);
+    //const v2 g = v2(0,-9.80665);
+    const v2 g = v2(0,-98.0665);
 
     v2 sumForce(ball*);
 

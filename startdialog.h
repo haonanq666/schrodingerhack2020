@@ -15,8 +15,6 @@ class StartDialog : public QDialog
 public:
     explicit StartDialog(QWidget *parent = nullptr);
     ~StartDialog();
-    //double initialV;
-    //double initialA;
 
 private:
     Ui::StartDialog *ui;

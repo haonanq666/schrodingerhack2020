@@ -6,8 +6,8 @@ ball::ball(v2 pos, double mass, v2 velocity, v2 acc)
     ballmass = mass;
     ballvelocity = velocity;
     ballacceleration = acc;
-    gravity = v2(0, 9.8*ballmass);
-    radious = 5.0;
+    //radious = 0.3;
+    radious = 3;
 }
 
 v2 ball::a(){
