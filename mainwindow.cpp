@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "startdialog.h"
 #include <QDebug>
 #include "v2.h"
 
@@ -8,12 +9,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    StartDialog *s = new StartDialog(this);
+    connect(s,&StartDialog::sendV, this, &MainWindow::setV);
+    s->exec();
     balltimer = new QTimer(this);
-    thisball = new ball( v2(0, 300), 40, v2(8, 0));  //ball(v2 pos, double mass,v2 velocity, v2 acc)
+    thisball = new ball( v2(0, 300), 40, ve);  //ball(v2 pos, double mass,v2 velocity, v2 acc)
 
-
-    fans.push_back(new fan(v2(200,100), v2(400, 200), 9));            //fan(v2 leftPoint, double length, double velocity)
-    fans.push_back(new fan(v2(800, 500), v2(400, 500), 9));
+    fans.push_back(new fan(v2(200,100), v2(400, 200), 2));            //fan(v2 leftPoint, v2 rightPoint, double velocity)
+    fans.push_back(new fan(v2(800, 500), v2(400, 500), 2));         //可以在这里调整风速
     //fanForce = thisfan->getForce(thisball);
     connect(balltimer, SIGNAL(timeout()), this, SLOT(updateball()));
     balltimer->start(clockspeed);
@@ -28,6 +31,13 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setV(v2 v)
+{
+    ve = v;
+    qDebug()<<ve.magnitude();
+    qDebug()<<ve.angle();
 }
 
 v2 MainWindow::sumForce(ball * b){
@@ -66,8 +76,6 @@ void MainWindow::updateball(){
     thisball->updatepos(sumForce(thisball), updateperiod);
     //qDebug()<<thisball->s().y();
     drawball();
-
-
 
 }
 

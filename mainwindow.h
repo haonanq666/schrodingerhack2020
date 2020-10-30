@@ -42,6 +42,7 @@ public:
     const QPixmap ballimg = QPixmap(":/new/prefix1/sucai/1436341580.jpg");
     void drawfan(fan*);
     void drawball();
+    void setV(v2 v);
 
 signals:
 
@@ -51,5 +52,6 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    v2 ve;
 };
 #endif // MAINWINDOW_H

@@ -13,16 +13,19 @@ SOURCES += \
     fan.cpp \
     main.cpp \
     mainwindow.cpp \
+    startdialog.cpp \
     v2.cpp
 
 HEADERS += \
     ball.h \
     fan.h \
     mainwindow.h \
+    startdialog.h \
     v2.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    startdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
