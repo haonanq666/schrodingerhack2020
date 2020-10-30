@@ -36,7 +36,7 @@ Although implementations of vectors probably existed, we wanted one that was lig
 ### The Physics Behind It All
 
 The central idea of our implementation is akin to an "inertial navigation system". At each point in time, an object would be subject to some force, which could be used to find acceleration. Therefore, a relation between the acceleration and time since some epoch can be determined; integrating this twice and replacing the integration constants with the objects initial velocity and position, the current position of the object can be determined. 
-$$\int\int \vec{a}(t)\ dt^2=\vec s(t)$$
+
 However, the function of acceleration to time may not be a function that is easy to work with; integrating would pose serious challenges. Therefore, we have introduced the notion of update cycles. During every cycle, the force acting on the object is considered to be constantly equal to the force determined at the beginning of the cycle; using this data, the velocity, speed, and position is updated accordingly. This allows for simplification of the calculation process. This calculation can be seen in the following member function of class ball:
 ```c++
 void  ball::updatepos(v2  force,  double  time){
