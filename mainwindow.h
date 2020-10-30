@@ -32,14 +32,17 @@ public:
     fan* thisfan;
     QVector<QLabel*> labels;
     QLabel* balllabel;
+    QLabel* exitlabel;
+    QLabel* canlabel;
     QVector<fan*> fans;
-    //v2 fanForce;  //不知道在这里declare合不合适
     const v2 g = v2(0,-9.80665);
 
     v2 sumForce(ball*);
 
-    const QPixmap fanimg = QPixmap(":/new/prefix1/sucai/674774700.jpg");
-    const QPixmap ballimg = QPixmap(":/new/prefix1/sucai/1436341580.jpg");
+    const QPixmap fanimg = QPixmap(":/new/prefix1/sucai/Wind.png");
+    const QPixmap ballimg = QPixmap(":/new/prefix1/sucai/Ball.png");
+    const QPixmap exitimg = QPixmap(":/new/prefix1/sucai/Exit.png");
+    const QPixmap canimg = QPixmap(":/new/prefix1/sucai/Cannon.png");
     void drawfan(fan*);
     void drawball();
     void setV(v2 v);

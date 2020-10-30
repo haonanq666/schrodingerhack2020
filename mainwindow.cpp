@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
     s->exec();
     balltimer = new QTimer(this);
     thisball = new ball( v2(0, 300), 40, ve);  //ball(v2 pos, double mass,v2 velocity, v2 acc)
-
     fans.push_back(new fan(v2(200,100), v2(400, 200), 2));            //fan(v2 leftPoint, v2 rightPoint, double velocity)
     fans.push_back(new fan(v2(800, 500), v2(400, 500), 2));         //可以在这里调整风速
     //fanForce = thisfan->getForce(thisball);
@@ -22,7 +21,14 @@ MainWindow::MainWindow(QWidget *parent)
     balltimer->start(clockspeed);
     drawfan(fans[0]);
     drawfan(fans[1]);
-
+    canlabel = new QLabel(this);
+    canlabel->setScaledContents(true);
+    canlabel->setPixmap(canimg);
+    canlabel->setGeometry(50,350,200,200);
+    exitlabel = new QLabel(this);
+    exitlabel->setScaledContents(true);
+    exitlabel->setPixmap(exitimg);
+    exitlabel->setGeometry(900,50,200,200);                    //可以调整(x,y,width,height)
     balllabel = new QLabel(this);
     balllabel->setScaledContents(true);
     balllabel->setPixmap(ballimg);
@@ -36,8 +42,8 @@ MainWindow::~MainWindow()
 void MainWindow::setV(v2 v)
 {
     ve = v;
-    qDebug()<<ve.magnitude();
-    qDebug()<<ve.angle();
+    //qDebug()<<ve.magnitude();
+    //qDebug()<<ve.angle();
 }
 
 v2 MainWindow::sumForce(ball * b){
@@ -76,7 +82,6 @@ void MainWindow::updateball(){
     thisball->updatepos(sumForce(thisball), updateperiod);
     //qDebug()<<thisball->s().y();
     drawball();
-
 }
 
 
