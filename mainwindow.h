@@ -11,6 +11,7 @@
 #include "ball.h"
 #include "fan.h"
 #include "Collision.h"
+#include "gameover.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

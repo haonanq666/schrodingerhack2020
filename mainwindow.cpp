@@ -110,6 +110,8 @@ void MainWindow::updateball(){
 
         if(checkexit()){
             gamewon=true;
+            gameOver* go = new gameOver;
+            go->show();
 
         }
     }
