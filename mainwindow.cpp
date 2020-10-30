@@ -3,6 +3,7 @@
 #include "startdialog.h"
 #include <QDebug>
 #include "v2.h"
+#include "gameover.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -87,6 +88,12 @@ void MainWindow::updateball(){
     c.updateCollisionStatus(thisball, arr);
     cout << thisball->s().x()<< " x direction; " << thisball->s().y() << " y direction.\n";
     drawball();
+/*    if(thisball->s().y()<-200){
+        gameOver s;
+        s.show();
+        //close
+    }
+*/
 }
 
 

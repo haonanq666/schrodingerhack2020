@@ -12,6 +12,7 @@ SOURCES += \
     ball.cpp \
     collision.cpp \
     fan.cpp \
+    gameover.cpp \
     main.cpp \
     mainwindow.cpp \
     startdialog.cpp \
@@ -21,11 +22,13 @@ HEADERS += \
     Collision.h \
     ball.h \
     fan.h \
+    gameover.h \
     mainwindow.h \
     startdialog.h \
     v2.h
 
 FORMS += \
+    gameover.ui \
     mainwindow.ui \
     startdialog.ui
 

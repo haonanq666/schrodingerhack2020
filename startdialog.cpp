@@ -10,6 +10,8 @@ StartDialog::StartDialog(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->Apply,&QPushButton::clicked,this,&StartDialog::start);
     this->setWindowTitle("Blowy Balley");
+    this->setObjectName("startdialog");
+    this->setStyleSheet("#startdialog{border-image:url(:/new/prefix1/sucai/StartD.png);}");
 }
 
 StartDialog::~StartDialog()
