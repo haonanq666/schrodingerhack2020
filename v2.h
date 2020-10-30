@@ -7,6 +7,11 @@ class v2
 {
 public:
     v2(double x=0, double y=0);
+    v2(double minx, double miny, double maxx, double maxy);
+    double minx();
+    double miny();
+    double maxx();
+    double maxy();
     double x();
     double y();
     double magnitude();
@@ -18,6 +23,10 @@ public:
 private:
     double xcomponent;
     double ycomponent;
+    double ix;
+    double iy;
+    double ax;
+    double ay;
 
 };
 

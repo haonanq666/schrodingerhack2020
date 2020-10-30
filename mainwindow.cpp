@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     balltimer = new QTimer(this);
     //ball(v2 pos, double mass,v2 velocity, v2 acc)
 
-    fans.push_back(new fan(v2(800,100), v2(950,150), 8));            //fan(v2 leftPoint, v2 rightPoint, double velocity)1
-    fans.push_back(new fan(v2(400,100), v2(600,100), 8));         //可以在这里调整风速
+    fans.push_back(new fan(v2(800,100), v2(950,150), 15));            //fan(v2 leftPoint, v2 rightPoint, double velocity)1
+    fans.push_back(new fan(v2(400,100), v2(600,100), 15));         //可以在这里调整风速
     //fanForce = thisfan->getForce(thisball);
     connect(balltimer, SIGNAL(timeout()), this, SLOT(updateball()));
     balltimer->start(clockspeed);
@@ -31,6 +31,9 @@ MainWindow::MainWindow(QWidget *parent)
     balllabel = new QLabel(this);
     balllabel->setScaledContents(true);
     balllabel->setPixmap(ballimg);
+
+    v2 vec1(450,0, 600,120);
+    arr = {vec1};
 }
 
 MainWindow::~MainWindow()
@@ -47,7 +50,7 @@ void MainWindow::setV(v2 v)
 }
 
 v2 MainWindow::sumForce(ball * b){
-    v2 sum = g;
+    v2 sum = g*b->getM();
     for(QVector<fan*>::iterator i= fans.begin(); i!=fans.end();i++){
         sum= sum + (*i)->getForce(b);
         //qDebug()<<sum.y();
@@ -81,6 +84,8 @@ void MainWindow::updateball(){
     //分辨率，使得原点可以挪到左下。目前假设屏幕高600（按需求调整）。
     thisball->updatepos(sumForce(thisball), updateperiod);
     //qDebug()<<thisball->s().y();
+    c.updateCollisionStatus(thisball, arr);
+    cout << thisball->s().x()<< " x direction; " << thisball->s().y() << " y direction.\n";
     drawball();
 }
 

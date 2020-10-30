@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     ball.cpp \
+    collision.cpp \
     fan.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     v2.cpp
 
 HEADERS += \
+    Collision.h \
     ball.h \
     fan.h \
     mainwindow.h \

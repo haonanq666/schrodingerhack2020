@@ -5,6 +5,12 @@ v2::v2(double x, double y)
     xcomponent=x;
     ycomponent=y;
 }
+v2::v2(double minx, double miny, double maxx, double maxy){
+    ix=minx;
+    iy=miny;
+    ax=maxx;
+    ay=maxy;
+}
 
 double v2::x(){
     return xcomponent;
@@ -12,6 +18,18 @@ double v2::x(){
 
 double v2::y(){
     return ycomponent;
+}
+double v2::minx(){
+    return ix;
+}
+double v2::miny(){
+    return iy;
+}
+double v2::maxx(){
+    return ax;
+}
+double v2::maxy(){
+    return ay;
 }
 
 v2 v2::operator+(const v2& input){
