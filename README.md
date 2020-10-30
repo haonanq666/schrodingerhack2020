@@ -55,7 +55,8 @@ v2  fan  ::  getForce(ball*  B){
   if(!isIn(B->s())){
   return  v2(0,0);
   }else{
-  return  windVelocity  *  (windVelocity.magnitude()  *  0.3  *  0.5  *  windDensity  *  M_PI  *  pow(B->getR(),2));
+  return  windVelocity  *  (windVelocity.magnitude()  *  0.3  *  0.5  *  windDensity  *  M_PI  
+          *  pow(B->getR(),2));
   }
 }
 ``` 
